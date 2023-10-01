@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="index.css">
+    <title>ShaRecipe</title>
+  </head>
+  <body>
+    <div class="top">
+      <img id="logo" src="logo.png"/>
+      <h1 id="title">ShaRecipe</h1>
+    </div>
+    <nav id="navbar_menu">
+      <ul id="navbar_list">
+	<li id="explore_li">
+	  <a class="link" id="explore" href="index.html">Explore</a>
+        </li>
+	<li id="search_li">
+          <textarea id="search" placeholder="Search"></textarea>
+	</li>
+	<li id="login_li">
+	  <a class="link" id="login" href="login.html">Login</a>
+        </li>
+	<li id="register_li">
+          <a class="link" id="register" href="register.html">Register</a>
+        </li> 
+      </ul>
+    </nav>
+    <div>
+      <ul class="vertical-flexbox">
+        <li>	
+          <h2>Create New Recipe</h2>
+	</li>
+	<li>
+          <label for="recipe_name">Name Recipe:</label>
+	  <input id="recipe_name"></textarea>
+	</li>
+	<li>
+          <label for="recipe_desc">Recipe Description:</label>
+	  <input id="recipe_desc"></textarea>
+	</li>
+	<li>
+          <label for="recipe_img_upload">Upload Recipe Images:</label>
+	  <input id="recipe_img_upload" type="file"></textarea>
+	</li>
+	<li>
+	  <label for="add_ingredient">Upload Ingredients:</label>
+	  <button id="add_ingredient">Add</button>
+	</li>
+	<li>
+	   <label for="private_button">Visibility:</label>
+	   <button id="private_button">Private</button>
+           <button id="public_button">Public</button>
+	<li>
+	  <input class="button" id="create_button" type="submit" value="Create"></input>
+	</li>
+    </div>
+  </body>
+</html>
