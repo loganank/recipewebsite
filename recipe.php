@@ -5,26 +5,7 @@
     <title>ShaRecipe</title>
   </head>
   <body>
-    <div class="top">
-      <img id="logo" src="logo.png"/>
-      <h1 id="title">ShaRecipe</h1>
-    </div>
-    <nav id="navbar_menu">
-      <ul id="navbar_list">
-	<li id="explore_li">
-	  <a class="link" id="explore" href="index.html">Explore</a>
-        </li>
-	<li id="search_li">
-          <textarea id="search" placeholder="Search"></textarea>
-	</li>
-	<li id="login_li">
-	  <a class="link" id="login" href="login.html">Login</a>
-        </li>
-	<li id="register_li">
-          <a class="link" id="register" href="register.html">Register</a>
-        </li> 
-      </ul>
-    </nav>
+    <?php include 'nav.php'; ?>
     <div>
       <ul class="vertical-flexbox" id="recipe_info">
 	<li>

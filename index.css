@@ -4,6 +4,7 @@
   --secondary: #222222;
   --highlight: #ffffff;
   --border: #000000;
+  --invalid: #ff0000;
 }
 
 html, body {
@@ -13,14 +14,16 @@ html, body {
   background-color: var(--background);
 }
 
-.top {
-  display: flex;
-  align-items: center;
-}
-
-#logo {
+img {
   width: 150px;
   height: 150px;
+}
+
+#profile_pic {
+  width: 20%;
+  height: 20%;
+  min-width: 80px;
+  min-height: 80px;
 }
 
 #recipe_img {
@@ -38,12 +41,19 @@ h2 {
   color: var(--secondary);
 }
 
+h3 {
+  color: var(--secondary);
+  padding: 0px;
+  margin: 10px;
+}
+
 nav {
   background-color: var(--primary);
   width: 100%;
   box-sizing: border-box;
   height: 4%;	
   min-height: 38px;
+  max-height: 38px;
   border: 1px solid var(--border);
 }
 
@@ -68,6 +78,14 @@ a {
 
 a:hover {
   color: var(--highlight);
+}
+
+#logout {
+  color: var(--invalid);
+}
+
+#space_li {
+  flex: 5;
 }
 
 #search_li {
@@ -99,14 +117,20 @@ textarea {
   flex-direction: column;  
 }
 
-#username, #password {
+input {
   margin-bottom: 10px;
+}
+
+.invalid_input {
+  color: var(--invalid);
+  font-size: 12px;
 }
 
 button, .button {
   color: var(--secondary);
   background-color: var(--primary);
   border-color: var(--primary);
+  margin-bottom: 10px;
 }
 
 .container {
