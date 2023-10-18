@@ -8,8 +8,12 @@ CREATE TABLE IF NOT EXISTS user (
 CREATE TABLE IF NOT EXISTS recipe (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(64) NOT NULL,
+  description VARCHAR(512) NOT NULL,
+  ingredients VARCHAR(512) NOT NULL,
+  visibility TINYINT(1) NOT NULL,
   user_id INT NOT NULL, 
   image_folder_path VARCHAR(128) NOT NULL,
+  extension VARCHAR(16) NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES user(id)
 );

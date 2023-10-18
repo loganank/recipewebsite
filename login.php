@@ -22,8 +22,9 @@
 	  </li>
 	  <li>
 	    <input class="button" id="login_button" type="submit" value="Login"></input>
-	 </li>
-      </ul>
+	  </li>
+        </ul>
+      </form>
     </div>
   </body>
 </html>
