@@ -1,7 +1,4 @@
 <?php
-  error_reporting(E_ALL);
-  ini_set('display_errors', 1);
-
   session_start();
 
   require_once('KLogger.php');
@@ -21,7 +18,7 @@
   $imageFileType = strtolower(pathinfo($_FILES["recipe_img_upload"]["name"], PATHINFO_EXTENSION));
 
   $dao = new Dao();
-  $recipeId = $dao->createRecipe($recipeName, $recipeDesc, $ingredients, $visibility, $_SESSION['user_id'], $target_dir, $imageFileType);
+  $recipeId = $dao->createRecipe($recipeName, $recipeDesc, $ingredients, $visibility, $_SESSION['user_id'], "recipe_images/" . $_SESSION['user_id'], $imageFileType);
 
   if (!file_exists($target_dir)) {
     mkdir($target_dir, 0777, true);
@@ -31,7 +28,6 @@
   $logger->LogWarn("Target file: [{$target_file}]");
 
   $uploadOk = 1;
-  //$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
   // Check if image file is a actual image or fake image
   $check = getimagesize($_FILES["recipe_img_upload"]["tmp_name"]);

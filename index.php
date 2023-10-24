@@ -16,50 +16,23 @@
             <button>Create Recipe</button>
           </a>
       </ul>
-      <ul>
-	<ul class="container vertical-flexbox">
-	  <li>
-	  <img id="recipe_img" src="recipe_images/recipe_1.jpg"/>
-	  </li>
-	</ul>
-        <ul id="ingredients_container" class="container vertical-flexbox">
-	  <li>
-	    <h2>Ingredients</h2>
-	  </li>
-	  <li>Potatoes</li>
-	  <li>Tomatoes</li>
-	  <li>Corn</li>
-	</ul>
-      </ul>
-      <ul>
-        <li>
-	  <button "view_recipe">
-	    <a href="recipe.php">View</a>
-	  </button>
-	</li>
-      </ul>
-      <ul>
-	<ul class="container vertical-flexbox">
-	  <li>
-	  <img id="recipe_img" src="recipe_images/recipe_2.jpg"/>
-	  </li>
-	</ul>
-        <ul id="ingredients_container" class="container vertical-flexbox">
-	  <li>
-	    <h2>Ingredients</h2>
-	  </li>
-	  <li>Potatoes</li>
-	  <li>Tomatoes</li>
-	  <li>Corn</li>
-	</ul>
-      </ul>
-      <ul>
-        <li>
-	  <button "view_recipe">
-	    <a href="recipe.php">View</a>
-	  </button>
-	</li>
-      </ul>
+        <?php
+          require_once 'Dao.php';
+	  $limNum = 10;
+          $offNum = 0;
+
+	  $dao = new Dao();
+	  $result = $dao->getRecipes($limNum, $offNum);
+	  //print_r($result);
+	  foreach ($result as $recipe) {
+	    echo '<ul><ul class="container vertical-flexbox">';
+	    echo '<li><img src="' . $recipe['image_folder_path'] . '/' . $recipe['id'] . '.' . $recipe['extension'] . '"/></li>';
+            echo '</ul><ul id="ingredients_container" class="container vertical-flexbox">';
+            echo '<li><h2>Ingredients</h2></li>';
+	    echo '<li>' . $recipe['ingredients'] . '</li></ul></ul>'; 
+	    echo '<ul><li><button "view_recipe"><a href="recipe.php">View</a></button></li></ul>';
+	  }
+	?>
     </div>
   </body>
 </html>
