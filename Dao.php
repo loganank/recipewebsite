@@ -8,16 +8,17 @@ ini_set('display_errors', 1);
 
 class Dao {
   /* local */	
+  /*
   private $host = "localhost";
   private $db = "recipewebsite";
   private $user = "loganank";
-  private $pass = "Y1y2sG3D4wn!";
+  private $pass = "Y1y2sG3D4wn!"; */
 
-  /* heroku
-  private $host = "us-cdbr-east-04.cleardb.com";
-  private $db = "heroku_f3d6b64b4b5dc57";
-  private $user = "be7813156b6434";
-  private $pass = "b7cb13a4"; */
+	/* heroku */
+  private $host = "l6glqt8gsx37y4hs.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+  private $db = "x3366brxqizsdue9";
+  private $user = "gco2ghmulrf1jwvu";
+  private $pass = "pn2zqsqy0gq0lr1p";
 
   public function getConnection () {
     return
@@ -135,7 +136,66 @@ class Dao {
     $stmt->execute();
     $result = $stmt->fetchAll();
 
-    $logger->LogWarn("User [{$_SESSION['user_id']}] loaded ten recipes");
+    if (empty($_SESSION) || empty($_SESSION['user_id'])) {
+      $logger->LogWarn("Anonymous user loaded ten recipes");
+    } else {
+      $logger->LogWarn("User [{$_SESSION['user_id']}] loaded ten recipes");
+    }
+    return $result; # no problem
+  }
+
+  public function getRecipe($id) {
+    $logger = new KLogger("log.txt", KLogger::WARN);
+    $connection = $this->getConnection();
+
+    # check if user exists
+    $sql = 'SELECT id, name, description, ingredients, visibility, user_id, image_folder_path, extension
+            FROM recipe
+            WHERE id = :id;';
+    $connection = $this->getConnection();
+    $stmt = $connection->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (empty($_SESSION) || empty($_SESSION['user_id'])) {
+      $logger->LogWarn("Anonymous user loaded recipe {$id}");
+    } else {
+      $logger->LogWarn("User [{$_SESSION['user_id']}] loaded recipe {$id}");
+    }
+    return $result; # no problem
+  }
+
+  public function saveRecipe($user_id, $recipe_id) {
+    $logger = new KLogger("log.txt", KLogger::WARN);
+    $connection = $this->getConnection();
+
+    # check if user exists
+    $sql = 'INSERT INTO saved_recipe (user_id, recipe_id)
+            VALUES (:user_id, :recipe_id);';
+    $connection = $this->getConnection();
+    $stmt = $connection->prepare($sql);
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt->bindParam(':recipe_id', $recipe_id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    $logger->LogWarn("User [{$user_id}] saved recipe {$recipe_id}");
+    return 0; # no problem
+  }
+  public function getSavedRecipe($recipe_id) {
+    $logger = new KLogger("log.txt", KLogger::WARN);
+    $connection = $this->getConnection();
+          
+    # check if user exists
+    $sql = 'SELECT id, user_id, recipe_id
+            FROM saved_recipe
+            WHERE recipe_id = :recipe_id;';
+    $connection = $this->getConnection();
+    $stmt = $connection->prepare($sql);
+    $stmt->bindParam(':recipe_id', $recipe_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
     return $result; # no problem
   }
 }

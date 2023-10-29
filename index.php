@@ -26,11 +26,12 @@
 	  //print_r($result);
 	  foreach ($result as $recipe) {
 	    echo '<ul><ul class="container vertical-flexbox">';
+	    echo '<li><h2>' . htmlspecialchars($recipe['name'], ENT_QUOTES, 'UTF-8') . '</h2></li>';
 	    echo '<li><img src="' . $recipe['image_folder_path'] . '/' . $recipe['id'] . '.' . $recipe['extension'] . '"/></li>';
             echo '</ul><ul id="ingredients_container" class="container vertical-flexbox">';
-            echo '<li><h2>Ingredients</h2></li>';
-	    echo '<li>' . $recipe['ingredients'] . '</li></ul></ul>'; 
-	    echo '<ul><li><button "view_recipe"><a href="recipe.php">View</a></button></li></ul>';
+            echo '<li><h3>Ingredients</h3></li>';
+	    echo '<li>' . htmlspecialchars($recipe['ingredients'], ENT_QUOTES, 'UTF-8') . '</li></ul></ul>'; 
+	    echo '<ul><li><button><a href="recipe.php?id=' . $recipe['id'] . '">View</a></button></li></ul>';
 	  }
 	?>
     </div>

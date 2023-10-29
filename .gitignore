@@ -1,3 +1,5 @@
 *~
 *.swp
 *.swo
+/recipe_images
+log.txt

@@ -47,6 +47,10 @@ h3 {
   margin: 10px;
 }
 
+.error {
+  color: var(--invalid);
+}
+
 nav {
   background-color: var(--primary);
   width: 100%;
@@ -81,6 +85,10 @@ a:hover {
 }
 
 #logout {
+  color: var(--invalid);
+}
+
+#recipe_info {
   color: var(--invalid);
 }
 
