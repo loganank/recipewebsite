@@ -1,4 +1,8 @@
 <?php
+
+  error_reporting(E_ALL);
+  ini_set('display_errors', 1);
+
   session_start();
 
   require_once('KLogger.php');
@@ -12,13 +16,11 @@
   $visibilityString = $_POST["visibility"];
   $visibility = ($visibilityString == 'public') ? 1 : 0;
 
-
-  $base_dir = "/var/www/html";
-  $target_dir = $base_dir . "/recipe_images/" . $_SESSION['user_id'];
+  $target_dir = "recipe_images/" . $_SESSION['user_id'];
   $imageFileType = strtolower(pathinfo($_FILES["recipe_img_upload"]["name"], PATHINFO_EXTENSION));
 
   $dao = new Dao();
-  $recipeId = $dao->createRecipe($recipeName, $recipeDesc, $ingredients, $visibility, $_SESSION['user_id'], "recipe_images/" . $_SESSION['user_id'], $imageFileType);
+  $recipeId = $dao->createRecipe($recipeName, $recipeDesc, $ingredients, $visibility, $_SESSION['user_id'], $target_dir, $imageFileType);
 
   if (!file_exists($target_dir)) {
     mkdir($target_dir, 0777, true);
