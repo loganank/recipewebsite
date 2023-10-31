@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+$currentPage = basename($_SERVER['PHP_SELF']);
+if ( ($currentPage != 'login.php' && $currentPage != 'register.php') && !isset($_SESSION['user_id'])) {
+    //redirect
+    header('Location: login.php');
+    die();
+}
+
+?>
     <div>
       <ul>
         <li>
