@@ -38,13 +38,10 @@ if ( ($currentPage != 'login.php' && $currentPage != 'register.php') && !isset($
       <ul>
     </div>
     <nav id="navbar_menu">
-      <ul id="navbar_list">
         <li id="explore_li">
           <a class="link" id="explore" href="index.php">Explore</a>
         </li>
-        <li id="search_li">
-          <textarea id="search" placeholder="Search"></textarea>
-        </li>
+      <ul id="navbar_list">
         <li id="login_li">
           <?php
 	    session_start();
