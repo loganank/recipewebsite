@@ -129,7 +129,6 @@ class Dao {
 	    ORDER BY id
 	    LIMIT :limNum
 	    OFFSET :offNum;';
-    $connection = $this->getConnection();
     $stmt = $connection->prepare($sql);
     $stmt->bindParam(':limNum', $limNum, PDO::PARAM_INT);
     $stmt->bindParam(':offNum', $offNum, PDO::PARAM_INT);
@@ -152,7 +151,6 @@ class Dao {
     $sql = 'SELECT id, name, description, ingredients, visibility, user_id, image_folder_path, extension
             FROM recipe
             WHERE id = :id;';
-    $connection = $this->getConnection();
     $stmt = $connection->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
@@ -173,7 +171,6 @@ class Dao {
     # check if user exists
     $sql = 'INSERT INTO saved_recipe (user_id, recipe_id)
             VALUES (:user_id, :recipe_id);';
-    $connection = $this->getConnection();
     $stmt = $connection->prepare($sql);
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->bindParam(':recipe_id', $recipe_id, PDO::PARAM_INT);
@@ -190,7 +187,6 @@ class Dao {
     $sql = 'SELECT id, user_id, recipe_id
             FROM saved_recipe
             WHERE recipe_id = :recipe_id;';
-    $connection = $this->getConnection();
     $stmt = $connection->prepare($sql);
     $stmt->bindParam(':recipe_id', $recipe_id, PDO::PARAM_INT);
     $stmt->execute();
@@ -198,5 +194,33 @@ class Dao {
 
     return $result; # no problem
   }
+
+    public function getSavedRecipes($limNum, $offNum, $userId)
+    {
+      $logger = new KLogger("log.txt", KLogger::WARN);
+      $connection = $this->getConnection();
+
+      # check if user exists
+      $sql =
+          'SELECT recipe_id
+	       FROM saved_recipe
+	       WHERE user_id = :user_id
+	       ORDER BY id
+	       LIMIT :limNum
+	       OFFSET :offNum;';
+      $stmt = $connection->prepare($sql);
+      $stmt->bindParam(':limNum', $limNum, PDO::PARAM_INT);
+      $stmt->bindParam(':offNum', $offNum, PDO::PARAM_INT);
+      $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+      $stmt->execute();
+      $result = $stmt->fetchAll();
+
+      if (empty($_SESSION) || empty($_SESSION['user_id'])) {
+        $logger->LogWarn("Anonymous user loaded ten saved recipes");
+      } else {
+        $logger->LogWarn("User [{$_SESSION['user_id']}] loaded ten saved recipes");
+      }
+      return $result; # no problem
+    }
 }
 ?>

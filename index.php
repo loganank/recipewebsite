@@ -15,6 +15,7 @@
           <a href="create_recipe.php">
             <button>Create Recipe</button>
           </a>
+        </li>
       </ul>
         <?php
           require_once 'Dao.php';

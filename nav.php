@@ -42,7 +42,10 @@ if ( ($currentPage != 'login.php' && $currentPage != 'register.php') && !isset($
           <a class="link" id="explore" href="index.php">Explore</a>
         </li>
       <ul id="navbar_list">
-        <li id="login_li">
+          <li id="saved_li">
+              <a class="link" id="saved" href="saved_recipes.php">Saved Recipes</a>
+          </li>
+          <li id="login_li">
           <?php
 	    session_start();
 	    if (empty($_SESSION['user'])) {
