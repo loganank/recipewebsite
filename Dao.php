@@ -7,13 +7,6 @@ ini_set('display_errors', 1);
 
 
 class Dao {
-  /* local */	
-  /*
-  private $host = "localhost";
-  private $db = "recipewebsite";
-  private $user = "loganank";
-  private $pass = "Y1y2sG3D4wn!"; */
-
 	/* heroku */
   private $host = "l6glqt8gsx37y4hs.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
   private $db = "x3366brxqizsdue9";

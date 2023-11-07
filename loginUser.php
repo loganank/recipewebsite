@@ -7,7 +7,7 @@
 
   $dao = new Dao();
 
-  $result = $dao->loginUser($username, $password);
+  $result = $dao->loginUser($username, $password + "thisismyhash123random");
 
   header('Location: '.'index.php');
   die();
