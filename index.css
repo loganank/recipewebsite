@@ -50,6 +50,10 @@ h3 {
   color: var(--invalid);
 }
 
+#prev_button, #next_button {
+  margin: 50px 10px 20px;
+}
+
 nav {
   background-color: var(--primary);
   width: 100%;

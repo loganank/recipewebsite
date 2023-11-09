@@ -41,22 +41,15 @@
 	    echo '<ul><li><button><a href="recipe.php?id=' . $recipe['id'] . '">View</a></button></li></ul>';
 	  }
 	?>
+        <ul>
+            <li>
+                <button id="prev_button">Prev</button>
+            </li>
+            <li>
+                <button id="next_button">Next</button>
+            </li>
+        </ul>
+        <script src="page.js" defer></script>
     </div>
-    <button id="nextButton">Next</button>
-
-    <script>
-        // Get the current page from the URL parameter
-        const urlParams = new URLSearchParams(window.location.search);
-        let currentPage = parseInt(urlParams.get('page')) || 0;
-
-        // Event listener for the "Next" button
-        document.getElementById('nextButton').addEventListener('click', function() {
-            // Increment the current page
-            currentPage++;
-
-            // Redirect to index.php with the updated page parameter
-            window.location.href = `index.php?page=${currentPage}`;
-        });
-    </script>
   </body>
 </html>
