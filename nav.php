@@ -9,7 +9,19 @@
     <script src="jquery-3.7.1.min.js"></script>
   </head>
   <body>
-  <script>$("a[href*='" + location.pathname + "']").addClass("current");</script>
+  <script>
+      $(document).ready(function() {
+          // Get the current page's URL
+          var currentPageUrl = window.location.pathname;
+
+          // Find the corresponding link in the navigation bar and add the 'active' class
+          $('nav a').each(function() {
+              if ($(this).attr('href') === currentPageUrl) {
+                  $(this).addClass('active');
+              }
+          });
+      });
+  </script>
 <?php
 session_start();
 
