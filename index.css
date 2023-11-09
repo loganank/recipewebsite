@@ -87,6 +87,11 @@ a:hover {
   color: var(--highlight);
 }
 
+.active {
+  font-weight: bold;
+  color: var(--highlight);
+}
+
 #logout {
   color: var(--invalid);
 }
