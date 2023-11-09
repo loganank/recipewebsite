@@ -42,5 +42,21 @@
 	  }
 	?>
     </div>
+    <button id="nextButton">Next</button>
+
+    <script>
+        // Get the current page from the URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        let currentPage = parseInt(urlParams.get('page')) || 1;
+
+        // Event listener for the "Next" button
+        document.getElementById('nextButton').addEventListener('click', function() {
+            // Increment the current page
+            currentPage++;
+
+            // Redirect to index.php with the updated page parameter
+            window.location.href = `index.php?page=${currentPage}`;
+        });
+    </script>
   </body>
 </html>
