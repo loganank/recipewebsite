@@ -8,6 +8,11 @@
   require_once('KLogger.php');
   require_once 'Dao.php';
 
+  if (!isset($_SESSION['user_id'])) {
+    header('Location: '.'index.php');
+    die();
+  }
+
   $logger = new KLogger("log.txt", KLogger::WARN);
 
   $recipeName = $_POST["recipe_name"];
