@@ -11,11 +11,18 @@
         </li>
       </ul>
         <?php
-          require_once 'Dao.php';
-	  $limNum = 10;
-          $offNum = 0;
+      require_once 'Dao.php';
 
-	  $dao = new Dao();
+      $dao = new Dao();
+
+	  $limNum = 10;
+      echo '<div>' . $dao->getRecipeCount() . '</div>';
+      if (isset($_GET['page'])) {
+          $offNum = $_GET['page'];
+      }
+        $id = $_GET['id'];
+      $offNum = 0;
+
 	  $result = $dao->getRecipes($limNum, $offNum);
 	  //print_r($result);
 	  foreach ($result as $recipe) {

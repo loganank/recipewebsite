@@ -136,6 +136,19 @@ class Dao {
     return $result; # no problem
   }
 
+  public function getRecipeCount() {
+    $connection = $this->getConnection();
+
+    # check if user exists
+    $sql = 'SELECT COUNT(*)
+            FROM recipe;';
+    $stmt = $connection->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchColumn();
+
+    return $result; # no problem
+  }
+
   public function getRecipe($id) {
     $logger = new KLogger("log.txt", KLogger::WARN);
     $connection = $this->getConnection();
