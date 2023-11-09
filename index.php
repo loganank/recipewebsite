@@ -15,14 +15,16 @@
 
       $dao = new Dao();
 
-	  $limNum = 10;
+      $recipesPerPage = 10;
+
+	  $limNum = $recipesPerPage;
       $recipeNumber = $dao->getRecipeCount();
       if (isset($_GET['page'])) {
-          if ($recipeNumber <= 10 * $_GET['page'])  {
+          if ($recipeNumber <= $recipesPerPage * $_GET['page'])  {
               header('Location: '.'index.php');
               die();
           }
-          $offNum = $_GET['page'];
+          $offNum = $_GET['page'] * $recipesPerPage;
       } else {
           $offNum = 0;
       }
