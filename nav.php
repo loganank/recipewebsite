@@ -11,13 +11,17 @@
   <body>
   <script>
       $(document).ready(function() {
-          // Get the current page's URL
-          var currentPageUrl = window.location.pathname;
+          // Get the current URL of the page
+          let currentURL = window.location.href;
 
-          // Find the corresponding link in the navigation bar and add the 'active' class
-          $('nav a').each(function() {
-              if ($(this).attr('href') === currentPageUrl) {
-                  $(this).addClass('active');
+          // Loop through each link in the navigation menu
+          $("#navbar_menu .link").each(function() {
+              let linkURL = $(this).attr("href");
+
+              // Check if the link's URL matches the current URL
+              if (currentURL.includes(linkURL)) {
+                  // If it matches, add a class to style it as active
+                  $(this).addClass("active");
               }
           });
       });
