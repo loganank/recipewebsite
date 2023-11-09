@@ -9,6 +9,7 @@
     <script src="jquery-3.7.1.min.js"></script>
   </head>
   <body>
+  <script>$("a[href*='" + location.pathname + "']").addClass("current");</script>
 <?php
 session_start();
 
