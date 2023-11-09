@@ -43,8 +43,15 @@
 	?>
         <ul>
             <li>
-                <button id="prev_button">Prev</button>
-                <button id="next_button">Next</button>
+                <?php
+                if (isset($_GET['page']) && $_GET['page'] > 0) {
+                    echo '<button id="prev_button">Prev</button>';
+                }
+
+                if ($recipeNumber > $recipesPerPage * ($_GET['page'] + 1)) {
+                    echo '<button id="next_button">Next</button>';
+                }
+                ?>
             </li>
         </ul>
         <script src="page.js" defer></script>
