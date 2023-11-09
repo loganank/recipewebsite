@@ -20,7 +20,7 @@
 	  $limNum = $recipesPerPage;
       $recipeNumber = $dao->getRecipeCount();
       if (isset($_GET['page'])) {
-          if ($recipeNumber <= $recipesPerPage * $_GET['page'])  {
+          if ($_GET['page'] < 0 || $recipeNumber <= $recipesPerPage * $_GET['page'])  {
               header('Location: '.'index.php');
               die();
           }
@@ -44,8 +44,6 @@
         <ul>
             <li>
                 <button id="prev_button">Prev</button>
-            </li>
-            <li>
                 <button id="next_button">Next</button>
             </li>
         </ul>
