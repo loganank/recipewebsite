@@ -172,16 +172,18 @@ class Dao {
     $logger->LogWarn("User [{$user_id}] saved recipe {$recipe_id}");
     return 0; # no problem
   }
-  public function getSavedRecipe($recipe_id) {
+  public function getSavedRecipe($user_id, $recipe_id) {
     $logger = new KLogger("log.txt", KLogger::WARN);
     $connection = $this->getConnection();
           
     # check if user exists
     $sql = 'SELECT id, user_id, recipe_id
             FROM saved_recipe
-            WHERE recipe_id = :recipe_id;';
+	    WHERE recipe_id = :recipe_id
+            AND user_id = :user_id;';
     $stmt = $connection->prepare($sql);
     $stmt->bindParam(':recipe_id', $recipe_id, PDO::PARAM_INT);
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 

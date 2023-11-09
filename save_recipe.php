@@ -13,7 +13,7 @@
       $dao = new Dao();
 
       // check if it has been saved before
-      $result = $dao->getSavedRecipe($recipe_id);
+      $result = $dao->getSavedRecipe($_SESSION['user_id'], $recipe_id);
       if (empty($result)) {
         $recipe = $dao->saveRecipe($_SESSION['user_id'], $recipe_id);
       } else {

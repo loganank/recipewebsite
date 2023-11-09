@@ -1,10 +1,3 @@
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="index.css">
-    <title>ShaRecipe</title>
-  </head>
-  <body>
     <?php include 'nav.php'; ?> 
     <div>
       <ul class="vertical-flexbox" id="recipe_info">
