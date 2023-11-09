@@ -49,13 +49,15 @@
                 } else {
                     $page = 0;
                 }
-                if ($page > 0) {
-                    echo '<button id="prev_button">Prev</button>';
-                }
 
-                if ($recipeNumber > $recipesPerPage * ($page + 1)) {
-                    echo '<button id="next_button">Next</button>';
-                }
+                $displayPrevButton = ($page > 0) ? '' : 'display-none';
+
+                // Check condition for next button
+                $displayNextButton = ($recipeNumber > $recipesPerPage * ($page + 1)) ? '' : 'display-none';
+
+
+                echo '<button id="prev_button" class="' . $displayPrevButton .'">Prev</button>';
+                echo '<button id="prev_button" class="' . $displayNextButton .'">Next</button>';
                 ?>
             </li>
         </ul>

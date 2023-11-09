@@ -3,7 +3,7 @@ const urlParams = new URLSearchParams(window.location.search);
 let currentPage = parseInt(urlParams.get('page')) || 0;
 
 // Event listener for the "Next" button
-document.getElementById('prev_button').addEventListener('click', function() {
+$('#prev_button').on('click', function() {
     // Decrement the current page
     currentPage--;
 
@@ -11,7 +11,7 @@ document.getElementById('prev_button').addEventListener('click', function() {
     window.location.href = `index.php?page=${currentPage}`;
 });
 
-document.getElementById('next_button').addEventListener('click', function() {
+$('#next_button').on('click', function() {
     // Increment the current page
     currentPage++;
 
