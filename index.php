@@ -47,7 +47,7 @@
     <script>
         // Get the current page from the URL parameter
         const urlParams = new URLSearchParams(window.location.search);
-        let currentPage = parseInt(urlParams.get('page')) || 1;
+        let currentPage = parseInt(urlParams.get('page')) || 0;
 
         // Event listener for the "Next" button
         document.getElementById('nextButton').addEventListener('click', function() {
