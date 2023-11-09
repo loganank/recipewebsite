@@ -16,12 +16,16 @@
       $dao = new Dao();
 
 	  $limNum = 10;
-      echo '<div>' . $dao->getRecipeCount() . '</div>';
+      $recipeNumber = $dao->getRecipeCount();
       if (isset($_GET['page'])) {
+          if ($recipeNumber <= 10 * $_GET['page'])  {
+              header('Location: '.'index.php');
+              die();
+          }
           $offNum = $_GET['page'];
+      } else {
+          $offNum = 0;
       }
-        $id = $_GET['id'];
-      $offNum = 0;
 
 	  $result = $dao->getRecipes($limNum, $offNum);
 	  //print_r($result);
