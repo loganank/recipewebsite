@@ -91,6 +91,10 @@ a:hover {
   color: var(--invalid);
 }
 
+#logout:hover {
+  color: var(--highlight);
+}
+
 #recipe_info {
   color: var(--invalid);
 }
