@@ -44,11 +44,16 @@
         <ul>
             <li>
                 <?php
-                if (isset($_GET['page']) && $_GET['page'] > 0) {
+                if (isset($_GET['page'])) {
+                    $page = $_GET['page'];
+                } else {
+                    $page = 0;
+                }
+                if ($page > 0) {
                     echo '<button id="prev_button">Prev</button>';
                 }
 
-                if ($recipeNumber > $recipesPerPage * ($_GET['page'] + 1)) {
+                if ($recipeNumber > $recipesPerPage * ($page + 1)) {
                     echo '<button id="next_button">Next</button>';
                 }
                 ?>
