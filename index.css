@@ -87,6 +87,10 @@ a:hover {
   color: var(--highlight);
 }
 
+button:hover {
+  color: var(--highlight);
+}
+
 .active {
   font-weight: bold;
   color: var(--highlight);
