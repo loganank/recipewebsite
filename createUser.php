@@ -7,7 +7,4 @@
   $dao = new Dao();
 
   $dao->createUser($username, $password);
-
-  header('Location: '.'login.php');
-  die();
 ?>

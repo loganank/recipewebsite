@@ -1,6 +1,7 @@
     <?php include 'nav.php'; ?>
     <div>
-       <form action="createUser.php" method="post">
+       <script src="ajax.js" defer></script>
+       <form id="registerUser" action="createUser.php">
 	<ul class="vertical-flexbox">
           <li>
             <h2 "register_title">Create Account</h2>
