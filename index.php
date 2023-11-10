@@ -37,6 +37,9 @@
 	    echo '<ul><ul class="container vertical-flexbox">';
 	    echo '<li><h2>' . htmlspecialchars($recipe['name'], ENT_QUOTES, 'UTF-8') . '</h2></li>';
 	    echo '<li><img src="' . $recipe['image_folder_path'] . '/' . $recipe['id'] . '.' . $recipe['extension'] . '"/></li>';
+	    echo '</ul><ul id="description_container" class="container vertical-flexbox">';
+	    echo '<li><h3>Description</h3></li>';
+	    echo '<li>' . htmlspecialchars($recipe['description'], ENT_QUOTES, 'UTF-8') . '</li>';
             echo '</ul><ul id="ingredients_container" class="container vertical-flexbox">';
             echo '<li><h3>Ingredients</h3></li>';
 	    echo '<li>' . htmlspecialchars($recipe['ingredients'], ENT_QUOTES, 'UTF-8') . '</li></ul></ul>'; 
@@ -45,8 +48,8 @@
 	?>
         <ul>
             <li>
-                <button id="prev_button" class="<?php echo $displayPrevButton; ?>">Prev</button>
-                <button id="next_button" class="<?php echo $displayNextButton; ?>">Next</button>
+                <button id="prev_button" class="spaced_button <?php echo $displayPrevButton; ?>">Prev</button>
+                <button id="next_button" class="spaced_button <?php echo $displayNextButton; ?>">Next</button>
             </li>
         </ul>
         <script src="page.js" defer></script>

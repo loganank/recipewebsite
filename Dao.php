@@ -112,6 +112,21 @@ class Dao {
     return $recipeId; # no problem
   }
 
+  public function removeRecipe($id) {
+    $logger = new KLogger("log.txt", KLogger::WARN);
+    $connection = $this->getConnection();
+
+    # check if user exists
+    $sql = 'DELETE FROM recipe
+            WHERE id=:id;';
+    $stmt = $connection->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    $logger->LogWarn("Removed recipe {$id}");
+    return 0; # no problem
+  }
+
   public function getRecipes($limNum, $offNum) {
     $logger = new KLogger("log.txt", KLogger::WARN);
     $connection = $this->getConnection();
@@ -185,6 +200,24 @@ class Dao {
     $logger->LogWarn("User [{$user_id}] saved recipe {$recipe_id}");
     return 0; # no problem
   }
+
+  public function removeSavedRecipe($user_id, $recipe_id) {
+    $logger = new KLogger("log.txt", KLogger::WARN);
+    $connection = $this->getConnection();
+
+    # check if user exists
+    $sql = 'DELETE FROM saved_recipe
+	    WHERE user_id=:user_id
+            AND recipe_id=:recipe_id;';
+    $stmt = $connection->prepare($sql);
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt->bindParam(':recipe_id', $recipe_id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    $logger->LogWarn("User [{$user_id}] removed saved recipe {$recipe_id}");
+    return 0; # no problem
+  }
+
   public function getSavedRecipe($user_id, $recipe_id) {
     $logger = new KLogger("log.txt", KLogger::WARN);
     $connection = $this->getConnection();

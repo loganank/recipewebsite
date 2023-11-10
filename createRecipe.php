@@ -8,7 +8,7 @@
   require_once('KLogger.php');
   require_once 'Dao.php';
 
-  if (!isset($_SESSION['user_id'])) {
+  if (empty($_SESSION) || empty($_SESSION['user_id'])) {
     header('Location: '.'index.php');
     die();
   }

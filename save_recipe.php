@@ -26,7 +26,7 @@
     $logger->LogWarn("User not signed in, tried to view saved recipe");
   }
   
-  header('Location: '.'index.php');
+  header('Location: index.php');
   die();      
 ?>          
 

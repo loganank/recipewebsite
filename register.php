@@ -1,6 +1,6 @@
     <?php include 'nav.php'; ?>
     <div>
-       <script src="ajax.js" defer></script>
+       <script src="registerAjax.js" defer></script>
        <form id="registerUser" action="createUser.php">
 	<ul class="vertical-flexbox">
           <li>

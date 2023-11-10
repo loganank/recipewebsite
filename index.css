@@ -50,7 +50,11 @@ h3 {
   color: var(--invalid);
 }
 
-#prev_button, #next_button {
+.danger-bg {
+  background-color: var(--invalid);
+}
+
+.spaced_button {
   margin: 50px 10px 20px;
 }
 

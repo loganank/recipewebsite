@@ -26,10 +26,14 @@
         echo '<ul><ul class="container vertical-flexbox">';
         echo '<li><h2>' . htmlspecialchars($recipe['name'], ENT_QUOTES, 'UTF-8') . '</h2></li>';
         echo '<li><img src="' . $recipe['image_folder_path'] . '/' . $recipe['id'] . '.' . $recipe['extension'] . '"/></li>';
+	echo '</ul><ul id="description_container" class="container vertical-flexbox">';
+        echo '<li><h3>Description</h3></li>';
+        echo '<li>' . htmlspecialchars($recipe['description'], ENT_QUOTES, 'UTF-8') . '</li>';
         echo '</ul><ul id="ingredients_container" class="container vertical-flexbox">';
         echo '<li><h3>Ingredients</h3></li>';
         echo '<li>' . htmlspecialchars($recipe['ingredients'], ENT_QUOTES, 'UTF-8') . '</li></ul></ul>';
-        echo '<ul><li><button><a href="recipe.php?id=' . $recipe['id'] . '">View</a></button></li></ul>';
+        echo '<ul><li><button class="spaced_button"><a href="recipe.php?id=' . $recipe['id'] . '">View</a></button>';
+        echo '<button class="spaced_button"><a href="remove_saved.php?id=' . $recipe['id'] . '">Unsave</a></button></li></ul>';
     }
     ?>
 </div>
