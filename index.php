@@ -15,21 +15,23 @@
 
       $dao = new Dao();
 
-      $recipesPerPage = 10;
-
-	  $limNum = $recipesPerPage;
       $recipeNumber = $dao->getRecipeCount();
-      if (isset($_GET['page'])) {
-          if ($_GET['page'] < 0 || $recipeNumber <= $recipesPerPage * $_GET['page'])  {
-              header('Location: '.'index.php');
-              die();
-          }
-          $offNum = $_GET['page'] * $recipesPerPage;
+      $recipesPerPage = 10;
+      if (!isset($_GET['page'])) {
+        $page = 0;
       } else {
-          $offNum = 0;
+        $page = $_GET['page'];	
+        if ($page < 0 || $recipeNumber <= $recipesPerPage * $page) {
+          header('Location: '.'index.php');
+          die();
+        }
       }
+      $displayPrevButton = ($page > 0) ? '' : 'hidden';
 
-	  $result = $dao->getRecipes($limNum, $offNum);
+      $displayNextButton = ($recipeNumber > $recipesPerPage * ($page + 1)) ? '' : 'hidden';
+
+
+	  $result = $dao->getRecipes($recipesPerPage, $page * $recipesPerPage);
 	  //print_r($result);
 	  foreach ($result as $recipe) {
 	    echo '<ul><ul class="container vertical-flexbox">';
@@ -43,20 +45,8 @@
 	?>
         <ul>
             <li>
-                <?php
-                if (isset($_GET['page'])) {
-                    $page = $_GET['page'];
-                } else {
-                    $page = 0;
-                }
-                if ($page > 0) {
-                    echo '<button id="prev_button">Prev</button>';
-                }
-
-                if ($recipeNumber > $recipesPerPage * ($page + 1)) {
-                    echo '<button id="next_button">Next</button>';
-                }
-                ?>
+                <button id="prev_button" class="<?php echo $displayPrevButton; ?>">Prev</button>
+                <button id="next_button" class="<?php echo $displayNextButton; ?>">Next</button>
             </li>
         </ul>
         <script src="page.js" defer></script>
