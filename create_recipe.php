@@ -22,13 +22,6 @@
 	    <input id="recipe_img_upload" name="recipe_img_upload" type="file" required/>
 	  </li>
 	  <li>
-	    <label for="visibility">Visibility:</label>
-            <select id="visibility" name="visibility" required>
-	      <option value="private">Private</option>
-              <option value="public">Public</option>
-            </select>
-          </li>
-	  <li>
 	    <input class="button" id="create_button" type="submit" value="Create"></input>
 	  </li>
         </ul>

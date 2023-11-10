@@ -18,7 +18,7 @@
   $recipeName = $_POST["recipe_name"];
   $recipeDesc = $_POST["recipe_desc"];
   $ingredients = $_POST["ingredients"];
-  $visibilityString = $_POST["visibility"];
+  $visibilityString = 'private';
   $visibility = ($visibilityString == 'public') ? 1 : 0;
 
   $target_dir = "recipe_images/" . $_SESSION['user_id'];

@@ -11,7 +11,7 @@
 	    <input id="username" name="username" required>
 	  </li>
 	  <li>
-            <label for="username">Select a Password:</label>
+            <label for="password">Select a Password:</label>
 	    <input id="password" type="password" name="password" required>
 	  </li>
 	  <li>
