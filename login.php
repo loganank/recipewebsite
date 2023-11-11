@@ -1,6 +1,7 @@
     <?php include 'nav.php'; ?>
     <div>
-      <form action="loginUser.php" method="post">
+      <script src="loginAjax.js" defer></script>
+      <form id="loginUser" action="loginUser.php">
 	<ul class="vertical-flexbox">
           <li>
             <h2 "login_title">Sign In</h2>

@@ -9,10 +9,10 @@ function submitFormRedirect(data, url, redirectUrl) {
       window.location.href = redirectUrl;
     }, 
     error: function(response) { 
-      errors = response.responseJSON;
+      let errors = response.responseJSON;
       $('#registerUser ul li.error').remove();
       $.each(errors, function(index, error) {
-        var li = $('<li>').text(error).addClass('error');
+        let li = $('<li>').text(error).addClass('error');
         $('#registerUser ul').append(li);
       });
     } 
