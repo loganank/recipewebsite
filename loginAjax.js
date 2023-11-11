@@ -5,7 +5,7 @@ function submitFormRedirect(data, url, redirectUrl) {
         data: data,
         success: function(data) {
             // Ajax call completed successfully
-            console.log("Form Submited Successfully");
+            console.log("Form Submitted Successfully");
             window.location.href = redirectUrl;
         },
         error: function(response) {
@@ -17,9 +17,9 @@ function submitFormRedirect(data, url, redirectUrl) {
     });
 }
 
-$('#register_button').click(function(e) {
+$('#login_button').click(function(e) {
     e.preventDefault();
-    let form = $('#registerUser');
+    let form = $('#loginUser');
     let url = form.attr('action');
     let data = form.serialize();
     let redirectUrl = 'index.php';
