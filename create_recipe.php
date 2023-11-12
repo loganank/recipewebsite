@@ -1,6 +1,7 @@
     <?php include 'nav.php'; ?> 
     <div>
-      <form action="createRecipe.php" method="post" enctype="multipart/form-data">
+      <script src="recipeAjax.js" defer></script>
+      <form id="createRecipe" action="createRecipe.php">
         <ul class="vertical-flexbox">
           <li>	
             <h2>Create New Recipe</h2>
