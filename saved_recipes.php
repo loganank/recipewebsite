@@ -1,10 +1,11 @@
-  <?php include 'nav.php'; ?>
-  <div>
-    <ul class="vertical-flexbox" id="recipe_info">
+<?php include 'nav.php'; ?>
+<div>
+    <ul id="recipes" class="vertical-flexbox">
         <li>
             <h1>Saved Recipes</h1>
         </li>
     </ul>
+    <script src="unsaveRecipeAjax.js" defer></script>
     <?php
     session_start();
     require_once 'Dao.php';
@@ -22,18 +23,19 @@
         }
 
         $recipe = $dao->getRecipe($savedId);
-
-        echo '<ul><ul class="container vertical-flexbox">';
+        echo '<div id="' . $savedId . '">';
+        echo '<ul><ul class="container vertical-flexbox"';
         echo '<li><h2>' . htmlspecialchars($recipe['name'], ENT_QUOTES, 'UTF-8') . '</h2></li>';
         echo '<li><img src="' . $recipe['image_folder_path'] . '/' . $recipe['id'] . '.' . $recipe['extension'] . '"/></li>';
-	echo '</ul><ul id="description_container" class="container vertical-flexbox">';
+        echo '</ul><ul id="description_container" class="container vertical-flexbox">';
         echo '<li><h3>Description</h3></li>';
         echo '<li>' . htmlspecialchars($recipe['description'], ENT_QUOTES, 'UTF-8') . '</li>';
         echo '</ul><ul id="ingredients_container" class="container vertical-flexbox">';
         echo '<li><h3>Ingredients</h3></li>';
         echo '<li>' . htmlspecialchars($recipe['ingredients'], ENT_QUOTES, 'UTF-8') . '</li></ul></ul>';
         echo '<ul><li><button class="spaced_button"><a href="recipe.php?id=' . $recipe['id'] . '">View</a></button>';
-        echo '<button class="spaced_button"><a href="remove_saved.php?id=' . $recipe['id'] . '">Unsave</a></button></li></ul>';
+        echo '<button id="remove_button" data-recipe-id="' . $savedId . '" class="spaced_button">Unsave</button></li></ul>';
+        echo '</div>';
     }
     ?>
 </div>

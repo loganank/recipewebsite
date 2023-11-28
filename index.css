@@ -5,6 +5,7 @@
   --highlight: #ffffff;
   --border: #000000;
   --invalid: #ff0000;
+  --success: #00ff00;
 }
 
 html, body {
@@ -44,6 +45,10 @@ h3 {
   color: var(--secondary);
   padding: 0px;
   margin: 10px;
+}
+
+.success {
+  color: var(--success);
 }
 
 .error {
